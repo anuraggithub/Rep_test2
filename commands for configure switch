@@ -1,0 +1,6 @@
+1. echo 1 > /proc/sys/kernel/sysrq
+2. iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+3. iptables -A FORWARD -i ppp0 -o p4p1 -m state --state RELATED,ESTABLISHED -j ACCEPT
+4. iptables -A FORWARD -i p4p1 -o ppp0 -j ACCEPT
+
+All of slaves should have subnet mask 255.255.255.0 and default gateway ip address 192.168.1.1 with dns 8.8.8.8
